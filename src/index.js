@@ -7,6 +7,7 @@ import {
     loadTasks,
     getTasks,
     getTasksLoadingStatus,
+    createTask,
 } from "./store/task";
 import configureStore from "./store/store";
 import { Provider } from "react-redux";
@@ -38,6 +39,10 @@ const App = (params) => {
         return <p>{error}</p>;
     }
 
+    const addNewTask = () =>{
+        dispatch(createTask({userId:1,title:"New Task",completed:false}))
+    }
+
     return (
         <>
             <h1> App</h1>
@@ -59,6 +64,9 @@ const App = (params) => {
                     </li>
                 ))}
             </ul>
+            <button onClick={addNewTask} >
+                            New Task
+            </button>
         </>
     );
 };
